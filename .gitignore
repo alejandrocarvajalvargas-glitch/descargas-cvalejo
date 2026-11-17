@@ -14,3 +14,6 @@ key.properties
 *.key
 google-services.json
 GoogleService-Info.plist
+
+# Imagenes para Play Console: no se publican en el sitio
+play-console/
