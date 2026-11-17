@@ -1,0 +1,16 @@
+# APK se publican en GitHub Releases, no en el repo
+downloads/
+*.apk
+*.aab
+
+# Firmas y secretos: nunca al repo
+*.jks
+*.keystore
+key.properties
+.env
+*.env
+*.pem
+*.p12
+*.key
+google-services.json
+GoogleService-Info.plist

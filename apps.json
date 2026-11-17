@@ -1,0 +1,43 @@
+{
+  "contact": "soporte@cvalejo.com",
+  "social": [
+    { "name": "Facebook", "url": "https://www.facebook.com/alejandro.carvajalvargas/about/" },
+    { "name": "Instagram", "url": "https://www.instagram.com/alejandro.carvajalvargas/" },
+    { "name": "YouTube", "url": "https://www.youtube.com/@alejandrocarvajalvargas7199/featured" }
+  ],
+  "apps": [
+    {
+      "id": "boxrock",
+      "name": "boxRock",
+      "description": "Caja fuerte para ocultar fotos, videos y archivos.",
+      "version": "1.0.2",
+      "file": "downloads/boxrock-1.0.2.apk",
+      "sha256": "3459325e9934285e3aff99a3352c7a5f53d7a1c5e77d0aaa2d78ad013d8eb2d1",
+      "sizeMB": 61,
+      "minAndroid": "7.0",
+      "privacy": "privacy.html"
+    },
+    {
+      "id": "paction",
+      "name": "Paction",
+      "description": "Planes de acción claros y medibles para equipos de retail.",
+      "version": "1.0.3",
+      "file": "downloads/paction-1.0.3.apk",
+      "sha256": "009b46ad3f4fbcf0a48620104dfa859166b3cf78fd4ec08e41d11d3a018c7a9d",
+      "sizeMB": 68,
+      "minAndroid": "7.0",
+      "privacy": "privacy.html"
+    },
+    {
+      "id": "scanprice",
+      "name": "ScanPrice: escáner de precios",
+      "description": "Escanea el código de barras y consulta precio y stock al instante.",
+      "version": "1.0.1",
+      "file": "",
+      "sha256": "",
+      "sizeMB": 0,
+      "minAndroid": "7.0",
+      "privacy": "privacy.html"
+    }
+  ]
+}
