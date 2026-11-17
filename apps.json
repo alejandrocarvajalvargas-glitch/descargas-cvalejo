@@ -9,7 +9,11 @@
     {
       "id": "boxrock",
       "name": "boxRock",
+      "tagline": "Una caja fuerte para tus fotos, videos y archivos.",
       "description": "Caja fuerte para ocultar fotos, videos y archivos.",
+      "features": [],
+      "icon": "assets/img/boxrock-icon.png",
+      "visual": "",
       "version": "1.0.2",
       "file": "https://github.com/alejandrocarvajalvargas-glitch/descargas-cvalejo/releases/download/boxrock-v1.0.2/boxrock-1.0.2.apk",
       "sha256": "3459325e9934285e3aff99a3352c7a5f53d7a1c5e77d0aaa2d78ad013d8eb2d1",
@@ -20,7 +24,17 @@
     {
       "id": "paction",
       "name": "Paction",
+      "tagline": "Planes de acción para equipos de retail, con seguimiento y avance.",
       "description": "Planes de acción claros y medibles para equipos de retail.",
+      "features": [
+        "Crea planes con objetivo, área, prioridad y fechas.",
+        "Sugiere de 4 a 8 acciones por área con IA. Si no hay IA disponible, usa reglas locales.",
+        "Muestra el avance de cada plan y avisa cuando una acción vence.",
+        "Genera un informe de avance en PDF, listo para firmar.",
+        "Modo oscuro, dictado por voz y compatible con TalkBack."
+      ],
+      "icon": "assets/img/paction-icon.png",
+      "visual": "assets/img/paction-1.png",
       "version": "1.0.3",
       "file": "https://github.com/alejandrocarvajalvargas-glitch/descargas-cvalejo/releases/download/paction-v1.0.3/paction-1.0.3.apk",
       "sha256": "009b46ad3f4fbcf0a48620104dfa859166b3cf78fd4ec08e41d11d3a018c7a9d",
@@ -30,8 +44,18 @@
     },
     {
       "id": "scanprice",
-      "name": "ScanPrice: escáner de precios",
+      "name": "ScanPrice",
+      "tagline": "Escanea el código y consulta precio y stock en segundos.",
       "description": "Escanea el código de barras y consulta precio y stock al instante.",
+      "features": [
+        "Escanea con la cámara o escribe el código a mano.",
+        "Busca por código, ítem o descripción.",
+        "El catálogo queda en caché, así que sirve aunque la señal sea débil.",
+        "Arma la lista de productos sin etiqueta mientras recorres la tienda.",
+        "El acceso lo aprueba el administrador del negocio."
+      ],
+      "icon": "assets/img/scanprice-icon.png",
+      "visual": "assets/img/scanprice-feature.png",
       "version": "1.0.1",
       "file": "https://github.com/alejandrocarvajalvargas-glitch/descargas-cvalejo/releases/download/scanprice-v1.0.1/scanprice-1.0.1.apk",
       "sha256": "733dc9afe8ec1435e759c0986a9341db7ddeeadfeb8c05da29e0f7cc7555d3c9",

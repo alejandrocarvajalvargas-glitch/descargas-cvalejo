@@ -4,27 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Descargas oficiales</title>
-  <meta name="description" content="Descarga directa de las aplicaciones oficiales.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Apps de Alejandro Carvajal: descarga directa</title>
+  <meta name="description" content="Herramientas para la tienda y para tu privacidad. Descarga directa de las apps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <h1>Descargas oficiales</h1>
-    <p>Aplicaciones publicadas directamente por el desarrollador.</p>
+  <header class="hero">
+    <p class="lede">Herramientas para la tienda y para tu privacidad.</p>
+    <h1>Tres apps, descargables desde aquí.</h1>
+    <p class="intro">Cada una se instala como cualquier APK de Android. Abajo puedes ver qué hace, su versión y cómo comprobar que el archivo no fue alterado.</p>
+    <nav class="shelf" id="shelf" aria-label="Apps"></nav>
   </header>
 
   <main id="apps" aria-live="polite">
     <p class="muted">Cargando aplicaciones…</p>
   </main>
 
-  <section class="notice">
-    <h2>Antes de instalar</h2>
+  <section class="install" aria-labelledby="install-title">
+    <h2 id="install-title">Antes de instalar</h2>
     <ul>
-      <li>Verifica que el archivo descargado coincida con el SHA-256 publicado.</li>
-      <li>Android pedirá permitir la instalación desde este navegador. Hazlo solo para esta descarga.</li>
-      <li>Descarga únicamente desde esta página.</li>
+      <li>Compara el SHA-256 del archivo con el publicado en su sección.</li>
+      <li>Android pedirá permitir la instalación desde el navegador. Actívalo solo para esta descarga.</li>
+      <li>Descarga solo desde esta página.</li>
     </ul>
   </section>
 
