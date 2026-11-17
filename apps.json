@@ -33,9 +33,9 @@
       "name": "ScanPrice: escáner de precios",
       "description": "Escanea el código de barras y consulta precio y stock al instante.",
       "version": "1.0.1",
-      "file": "",
-      "sha256": "",
-      "sizeMB": 0,
+      "file": "https://github.com/alejandrocarvajalvargas-glitch/descargas-cvalejo/releases/download/scanprice-v1.0.1/scanprice-1.0.1.apk",
+      "sha256": "733dc9afe8ec1435e759c0986a9341db7ddeeadfeb8c05da29e0f7cc7555d3c9",
+      "sizeMB": 75,
       "minAndroid": "7.0",
       "privacy": "privacy.html"
     }
