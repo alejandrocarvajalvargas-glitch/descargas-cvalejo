@@ -13,7 +13,7 @@
       "description": "Caja fuerte para ocultar fotos, videos y archivos.",
       "features": [],
       "icon": "assets/img/boxrock-icon.png",
-      "visual": "",
+      "shots": [],
       "version": "1.0.2",
       "file": "https://github.com/alejandrocarvajalvargas-glitch/descargas-cvalejo/releases/download/boxrock-v1.0.2/boxrock-1.0.2.apk",
       "sha256": "3459325e9934285e3aff99a3352c7a5f53d7a1c5e77d0aaa2d78ad013d8eb2d1",
@@ -34,7 +34,7 @@
         "Modo oscuro, dictado por voz y compatible con TalkBack."
       ],
       "icon": "assets/img/paction-icon.png",
-      "visual": "assets/img/paction-1.png",
+      "shots": ["assets/img/paction-1.png", "assets/img/paction-dashboard.jpg"],
       "version": "1.0.3",
       "file": "https://github.com/alejandrocarvajalvargas-glitch/descargas-cvalejo/releases/download/paction-v1.0.3/paction-1.0.3.apk",
       "sha256": "009b46ad3f4fbcf0a48620104dfa859166b3cf78fd4ec08e41d11d3a018c7a9d",
@@ -55,7 +55,7 @@
         "El acceso lo aprueba el administrador del negocio."
       ],
       "icon": "assets/img/scanprice-icon.png",
-      "visual": "assets/img/scanprice-feature.png",
+      "shots": ["assets/img/scanprice-feature.png", "assets/img/scanprice-login.jpg", "assets/img/scanprice-menu.jpg"],
       "version": "1.0.1",
       "file": "https://github.com/alejandrocarvajalvargas-glitch/descargas-cvalejo/releases/download/scanprice-v1.0.1/scanprice-1.0.1.apk",
       "sha256": "733dc9afe8ec1435e759c0986a9341db7ddeeadfeb8c05da29e0f7cc7555d3c9",

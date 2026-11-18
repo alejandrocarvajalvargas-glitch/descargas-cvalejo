@@ -9,14 +9,26 @@
   <meta name="description" content="Herramientas para la tienda y para tu privacidad. Descarga directa de las apps.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=2">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="assets/style.css?v=6">
 </head>
 <body>
   <header class="hero">
-    <p class="lede">Herramientas para la tienda y para tu privacidad.</p>
-    <h1>Tres apps, descargables desde aquí.</h1>
-    <p class="intro">Cada una se instala como cualquier APK de Android. Abajo puedes ver qué hace, su versión y cómo comprobar que el archivo no fue alterado.</p>
+    <div class="panel">
+      <div class="panel-top">
+        <span><span class="live-dot" aria-hidden="true"></span>Apps Android</span>
+        <span>Alejandro Carvajal</span>
+      </div>
+      <div class="clock" id="clock" role="timer" aria-label="Hora actual">--:--:--</div>
+      <ul class="zones" aria-label="Hora en otras ciudades">
+        <li class="zone" data-tz="America/Bogota"><span>Bogotá</span><time></time></li>
+        <li class="zone" data-tz="Europe/Madrid"><span>Madrid</span><time></time></li>
+        <li class="zone" data-tz="America/New_York"><span>Nueva York</span><time></time></li>
+        <li class="zone" data-tz="Asia/Tokyo"><span>Tokio</span><time></time></li>
+      </ul>
+      <h1>Tres apps, descargables desde aquí.</h1>
+      <p class="intro">Herramientas para la tienda y para tu privacidad. Cada una se instala como cualquier APK de Android. Abajo puedes ver qué hace, su versión y cómo comprobar que el archivo no fue alterado.</p>
+    </div>
     <nav class="shelf" id="shelf" aria-label="Apps"></nav>
   </header>
 
@@ -27,7 +39,7 @@
   <section class="install" aria-labelledby="install-title">
     <h2 id="install-title">Antes de instalar</h2>
     <ul>
-      <li>Compara el SHA-256 del archivo con el publicado en su sección.</li>
+      <li>Si quieres comprobar el archivo, abre «Verificar SHA-256» en su tarjeta y compara el valor.</li>
       <li>Android pedirá permitir la instalación desde el navegador. Actívalo solo para esta descarga.</li>
       <li>Descarga solo desde esta página.</li>
     </ul>
@@ -41,6 +53,6 @@
     </p>
   </footer>
 
-  <script src="assets/app.js?v=2" defer></script>
+  <script src="assets/app.js?v=6" defer></script>
 </body>
 </html>

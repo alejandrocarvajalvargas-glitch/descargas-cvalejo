@@ -1,3 +1,37 @@
+// Reloj y zonas horarias del panel. Los dígitos "giran" al cambiar.
+(function () {
+  const clockEl = document.getElementById("clock");
+  const timeFmt = new Intl.DateTimeFormat("es", { hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" });
+  const zones = [...document.querySelectorAll(".zone")].map((z) => ({
+    el: z.querySelector("time"),
+    fmt: new Intl.DateTimeFormat("es", { timeZone: z.dataset.tz, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }),
+  }));
+  const setChar = (node, ch) => {
+    if (node.textContent === ch) return;
+    node.textContent = ch;
+    node.classList.remove("flip");
+    void node.offsetWidth; // reinicia la animación
+    node.classList.add("flip");
+  };
+  function tick() {
+    const now = new Date();
+    const t = timeFmt.format(now);
+    if (!clockEl.children.length) {
+      clockEl.textContent = ""; // quita el texto de marcador
+      for (const ch of t) {
+        const s = document.createElement("span");
+        s.className = ch === ":" ? "sep" : "d";
+        s.textContent = ch;
+        clockEl.append(s);
+      }
+    }
+    [...t].forEach((ch, i) => { if (ch !== ":") setChar(clockEl.children[i], ch); });
+    for (const z of zones) z.el.textContent = z.fmt.format(now);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
 // Pinta las apps desde apps.json. Todo el texto va con textContent: nada del JSON se interpreta como HTML.
 (async function () {
   const main = document.getElementById("apps");
@@ -7,7 +41,7 @@
     ((/^[a-z0-9_.\-\/]+\.(apk|html|pdf)$/i.test(p) && !p.includes("..")) ||
      /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/releases\/download\/[\w.\-]+\/[\w.\-]+\.apk$/i.test(p));
   const isSafeSha = (s) => typeof s === "string" && /^[a-f0-9]{64}$/i.test(s);
-  const isSafeImg = (p) => typeof p === "string" && /^assets\/img\/[a-z0-9_\-]+\.png$/i.test(p);
+  const isSafeImg = (p) => typeof p === "string" && /^assets\/img\/[a-z0-9_\-]+\.(png|jpg)$/i.test(p);
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -40,14 +74,30 @@
     head.append(titles);
 
     const body = el("div", "app-body");
-    if (isSafeImg(app.visual)) {
-      const fig = el("figure", "shot");
-      const img = el("img");
-      img.src = app.visual;
-      img.alt = "Captura de " + app.name;
-      img.loading = "lazy";
-      fig.append(img);
-      body.append(fig);
+    const shots = (Array.isArray(app.shots) ? app.shots : []).filter(isSafeImg);
+    if (shots.length) {
+      // Teléfono 3D: gira solo en CSS; las capturas cambian con setInterval (ver abajo).
+      const stage = el("div", "stage");
+      const phone = el("div", "phone");
+      const screen = el("div", "screen");
+      shots.forEach((src, i) => {
+        const img = el("img");
+        img.src = src;
+        img.alt = i === 0 ? "Captura de " + app.name : "";
+        img.loading = "lazy";
+        if (i === 0) img.classList.add("on");
+        screen.append(img);
+      });
+      for (let i = 0; i < 16; i++) {
+        const slice = el("div", "slice");
+        slice.style.setProperty("--i", i); // por CSSOM: permitido por la CSP
+        phone.append(slice);
+      }
+      const front = el("div", "front");
+      front.append(screen, el("div", "glare"));
+      phone.append(front, el("div", "back"), el("span", "btn b1"), el("span", "btn b2"));
+      stage.append(phone);
+      body.append(stage);
     }
     if (Array.isArray(app.features) && app.features.length) {
       const ul = el("ul", "features");
@@ -59,11 +109,12 @@
     specRow(dl, "Versión", app.version);
     specRow(dl, "Android", app.minAndroid + " o superior");
     specRow(dl, "Tamaño", app.sizeMB + " MB");
+    let shaBox = null;
     if (isSafeSha(app.sha256)) {
-      const wrap = el("div", "sha-row");
-      wrap.append(el("dt", "", "SHA-256"));
-      const dd = el("dd", "sha");
-      dd.textContent = app.sha256;
+      shaBox = el("details", "sha-details");
+      shaBox.append(el("summary", "", "Verificar SHA-256"));
+      const sha = el("p", "sha");
+      sha.textContent = app.sha256;
       const copy = el("button", "copy", "Copiar");
       copy.type = "button";
       copy.addEventListener("click", async () => {
@@ -74,9 +125,8 @@
           copy.textContent = "No se pudo copiar";
         }
       });
-      dd.append(copy);
-      wrap.append(dd);
-      dl.append(wrap);
+      sha.append(copy);
+      shaBox.append(sha);
     }
 
     const actions = el("div", "actions");
@@ -96,6 +146,7 @@
 
     body.append(dl, actions);
     section.append(head, body);
+    if (shaBox) section.append(shaBox);
     return section;
   }
 
@@ -118,8 +169,27 @@
     }
 
     main.textContent = "";
+    // Cambia la captura de cada teléfono cada 3,2 s (solo si hay más de una).
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setInterval(() => {
+        for (const screen of document.querySelectorAll(".screen")) {
+          const imgs = [...screen.children];
+          if (imgs.length < 2) continue;
+          const next = (imgs.findIndex((im) => im.classList.contains("on")) + 1) % imgs.length;
+          imgs.forEach((im, i) => im.classList.toggle("on", i === next));
+        }
+      }, 3200);
+    }
+    const io ="IntersectionObserver" in window
+      ? new IntersectionObserver((entries) => {
+          for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        }, { threshold: 0.12 })
+      : null;
     for (const app of data.apps) {
-      main.append(buildApp(app));
+      const section = buildApp(app);
+      section.classList.add("reveal");
+      main.append(section);
+      if (io) io.observe(section); else section.classList.add("in");
       const link = el("a", "shelf-item");
       link.href = "#" + app.id;
       link.dataset.app = app.id;
